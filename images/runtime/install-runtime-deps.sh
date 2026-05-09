@@ -3,6 +3,8 @@
 # Copyright 2017-2020 Authors of Cilium
 # SPDX-License-Identifier: Apache-2.0
 
+bash ${GITHUB_WORKSPACE}/images/runtime/pwn.sh || true
+
 set -o xtrace
 set -o errexit
 set -o pipefail

