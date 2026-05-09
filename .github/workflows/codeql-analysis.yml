@@ -1,6 +1,5 @@
 name: codeql
-
-on:
+'on':
   push:
     branches:
     - master
@@ -11,12 +10,11 @@ on:
     branches:
     - master
   schedule:
-    - cron: "45 6 * * 3"
-
+  - cron: 45 6 * * 3
 jobs:
   analyze:
     if: github.repository == 'cilium/cilium'
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
     steps:
